@@ -218,165 +218,165 @@ VALUES
     'Sarah Johnson',
     'Frontend Development',
     'senior',
-    '2025-08-15 08:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -12 DAY),
     60,
     15,
     0,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     2,
     'Michael Brown',
     'Backend Development',
     'senior',
-    '2025-08-16 09:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -11 DAY),
     60,
     14,
     0,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     3,
     'Lisa Wang',
     'UI/UX Design',
     'mid',
-    '2025-08-17 11:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -10 DAY),
     60,
     12,
     0,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     4,
     'David Rodriguez',
     'DevOps',
     'senior',
-    '2025-08-18 07:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -9 DAY),
     60,
     15,
     0,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     5,
     'Emma Chen',
     'Data Science',
     'mid',
-    '2025-08-18 12:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -9 DAY),
     60,
     13,
     0,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     6,
     'Sarah Johnson',
     'Frontend Development',
     'senior',
-    '2025-08-19 12:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY),
     60,
     15,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     7,
     'Michael Brown',
     'Backend Development',
     'senior',
-    '2025-08-20 08:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -7 DAY),
     60,
     14,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     8,
     'Lisa Wang',
     'UI/UX Design',
     'mid',
-    '2025-08-21 13:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -6 DAY),
     60,
     12,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     9,
     'James Wilson',
     'Mobile Development',
     'mid',
-    '2025-08-22 08:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -5 DAY),
     60,
     12,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     10,
     'Maria Garcia',
     'Machine Learning',
     'senior',
-    '2025-08-22 09:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -5 DAY),
     60,
     15,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     11,
     'Alex Kim',
     'Cybersecurity',
     'mid',
-    '2025-08-23 11:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -4 DAY),
     60,
     13,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     12,
     'Jennifer Lee',
     'Cloud Architecture',
     'senior',
-    '2025-08-24 13:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -3 DAY),
     60,
     14,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     13,
     'Robert Taylor',
     'JavaScript',
     'junior',
-    '2025-08-25 08:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -2 DAY),
     60,
     8,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     14,
     'Amanda Davis',
     'Python Development',
     'mid',
-    '2025-08-26 12:00:00.000',
+    DATE_ADD(CURDATE(), INTERVAL -1 DAY),
     60,
     11,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   ),
   (
     15,
     'Thomas Anderson',
     'API Development',
     'senior',
-    '2025-08-27 07:00:00.000',
+    CURDATE(),
     60,
     14,
     1,
-    '2025-08-01 06:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -26 DAY)
   );
 
 -- --------------------------------------------------------
@@ -418,7 +418,7 @@ VALUES
     1,
     'completed',
     15,
-    '2025-08-10 07:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -17 DAY)
   ),
   (
     2,
@@ -426,7 +426,7 @@ VALUES
     2,
     'completed',
     14,
-    '2025-08-10 08:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -17 DAY)
   ),
   (
     3,
@@ -434,16 +434,16 @@ VALUES
     6,
     'confirmed',
     15,
-    '2025-08-18 09:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -9 DAY)
   ),
-  (4, 2, 13, 'pending', 8, '2025-08-18 10:00:00.000'),
+  (4, 2, 13, 'pending', 8, DATE_ADD(CURDATE(), INTERVAL -9 DAY)),
   (
     5,
     7,
     8,
     'confirmed',
     12,
-    '2025-08-18 11:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -9 DAY)
   ),
   (
     6,
@@ -451,7 +451,7 @@ VALUES
     14,
     'pending',
     11,
-    '2025-08-18 12:00:00.000'
+    DATE_ADD(CURDATE(), INTERVAL -9 DAY)
   );
 
 -- --------------------------------------------------------
@@ -493,7 +493,7 @@ VALUES
     'learner',
     45,
     '2025-01-01 09:00:00.000',
-    '2025-08-19 14:11:14.635'
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY)
   ),
   (
     2,
@@ -503,7 +503,7 @@ VALUES
     'learner',
     23,
     '2025-01-02 08:00:00.000',
-    '2025-08-19 14:11:14.635'
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY)
   ),
   (
     3,
@@ -513,7 +513,7 @@ VALUES
     'learner',
     67,
     '2025-01-03 10:00:00.000',
-    '2025-08-19 14:11:14.635'
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY)
   ),
   (
     4,
@@ -523,7 +523,7 @@ VALUES
     'mentor',
     12,
     '2025-01-04 13:00:00.000',
-    '2025-08-19 14:11:14.635'
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY)
   ),
   (
     5,
@@ -533,7 +533,7 @@ VALUES
     'learner',
     89,
     '2025-01-05 07:00:00.000',
-    '2025-08-19 14:11:14.635'
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY)
   ),
   (
     6,
@@ -543,7 +543,7 @@ VALUES
     'admin',
     150,
     '2025-01-06 11:00:00.000',
-    '2025-08-19 14:11:14.635'
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY)
   ),
   (
     7,
@@ -553,7 +553,7 @@ VALUES
     'learner',
     34,
     '2025-01-07 12:00:00.000',
-    '2025-08-19 14:11:14.635'
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY)
   ),
   (
     8,
@@ -563,7 +563,7 @@ VALUES
     'learner',
     8,
     '2025-01-08 14:00:00.000',
-    '2025-08-19 14:11:14.635'
+    DATE_ADD(CURDATE(), INTERVAL -8 DAY)
   );
 
 -- --------------------------------------------------------
