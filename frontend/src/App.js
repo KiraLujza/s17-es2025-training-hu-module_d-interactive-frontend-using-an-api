@@ -1,10 +1,13 @@
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import Layout from "./pages/Layout";
+import NoPage from "./pages/NoPage";
+import DashboardPage from "./pages/DashboardPage";
+import CoursesPage from "./pages/CoursesPage";
+import MentorsPage from "./pages/MentorsPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
-import Navigation from "./pages/Navigation";
-
-export default function App() {
+function App() {
   const router = createBrowserRouter([
     {
       path: "/login",
@@ -15,10 +18,37 @@ export default function App() {
       element: <RegistrationPage />,
     },
     {
-      path: "/navigation",
-      element: <Navigation />,
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: <Navigate to="/dashboard" replace />,
+        },
+        {
+          path: "/dashboard",
+          element: <DashboardPage />,
+        },
+        {
+          path: "/courses",
+          element: <CoursesPage />,
+        },
+        {
+          path: "/mentors",
+          element: <MentorsPage />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <NoPage />,
     },
   ]);
+return (
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
+);
 
-  return <RouterProvider router={router} />;
 }
+export default App;

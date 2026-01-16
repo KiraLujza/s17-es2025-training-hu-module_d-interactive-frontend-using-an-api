@@ -23,8 +23,12 @@ export default function Navigation() {
         </div>
 
         <div className="nav-right-side">
-          <span className="nav-pill">25 credit</span>
-          <span className="nav-user">Üdv, John Doe</span>
+          <ul>
+            <li className="kiemelt">
+              {user.creditBalance ? user.creditBalance : "0"} credits
+            </li>
+            <li>Welcome {user.name ? user.name : "Guest"}</li>
+          </ul>
           <button className="nav-btn">Kijelentkezés</button>
         </div>
       </div>
