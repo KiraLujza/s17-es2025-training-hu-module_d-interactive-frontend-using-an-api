@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./css/login.css";
 import "./css/registration.css";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function RegistrationPage() {
   const [email, setEmail] = useState("");
@@ -10,17 +11,27 @@ export default function RegistrationPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
+  const { register, serverError, clearServerError, loading } = useContext(AuthContext);
+
   function submit(event) {
     event.preventDefault();
-    const obj=validateForm();
 
-    setErrors({ ...obj });
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
-    console.log("LOGIN:", { email, password });
+    const data = { email, password, name };
+    register(data);
   }
 
-    function validateForm() {
+  function validateForm() {
     const newErrors = {};
+
+    if (!name) {
+      newErrors.name = "A teljes név kötelező";
+    }
 
     if (!email) {
       newErrors.email = "Az email cím kötelező";
@@ -31,25 +42,33 @@ export default function RegistrationPage() {
     if (!password) {
       newErrors.password = "A jelszó kötelező";
     } else if (password.length < 6) {
-      newErrors.password =
-        "A jelszónak legalább 6 karakter hosszúnak kell lennie";
+      newErrors.password = "A jelszónak legalább 6 karakter hosszúnak kell lennie";
+    }
+
+    if (!cpassword) {
+      newErrors.cpassword = "A jelszó megerősítése kötelező";
+    } else if (password !== cpassword) {
+      newErrors.cpassword = "A jelszavak nem egyeznek";
     }
 
     return newErrors;
- 
   }
 
   return (
     <div className="page">
       <div className="registration">
         <h1>Új fiók létrehozása</h1>
+        {serverError && <div className="alert-error">{serverError}</div>}
         <form onSubmit={submit}>
           <label>Teljes név</label>
           <input
             type="name"
             value={name}
             placeholder="Add meg a teljes neved"
-            onChange={(e) => setFullname(e.target.value)}
+            onChange={(e) => {
+              setFullname(e.target.value);
+              if (serverError) clearServerError();
+            }}
           />
            {errors.name && (
     <span className="error-text">{errors.name}</span>
@@ -60,7 +79,10 @@ export default function RegistrationPage() {
             type="email"
             value={email}
             placeholder="Add meg az email címed"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (serverError) clearServerError();
+            }}
           />
            {errors.email && (
     <span className="error-text">{errors.email}</span>
@@ -71,7 +93,10 @@ export default function RegistrationPage() {
             type="password"
             value={password}
             placeholder="Add meg a jelszavad"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (serverError) clearServerError();
+            }}
           />
            {errors.password && (
     <span className="error-text">{errors.password}</span>
@@ -82,13 +107,18 @@ export default function RegistrationPage() {
             type="password"
             value={cpassword}
             placeholder="Jelszó megerősítése"
-            onChange={(e) => setCPassword(e.target.value)}
+            onChange={(e) => {
+              setCPassword(e.target.value);
+              if (serverError) clearServerError();
+            }}
           />
-          {errors.password && (
-            <span className="error-text">{errors.password}</span>
+          {errors.cpassword && (
+            <span className="error-text">{errors.cpassword}</span>
           )}
 
-          <button type="submit">Fiók létrehozása</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Fiók létrehozása..." : "Fiók létrehozása"}
+          </button>
         </form>
         <p className="bottom-text">
           Már van fiókod? <NavLink to="/login">Jelentkezz be itt</NavLink>

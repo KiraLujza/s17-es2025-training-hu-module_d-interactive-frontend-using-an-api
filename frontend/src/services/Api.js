@@ -1,17 +1,21 @@
 import axios from "axios";
 
-const myAxsios = axios.create({
-     baseURL: "http://localhost:5000/api/v1",
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-})
+const myAxios = axios.create({
+    baseURL: "http://localhost:5000/api/v1",
+    headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+    },
+});
 
-export function gatAuthHeaders(){
+/* minden kérésnél a header-hez hozzá kell tenni a tokent.  */
+export function getAuthHeaders() {
     const token = localStorage.getItem("token");
-    return{
+    return {
         "X-API-TOKEN": token,
-        "Contect-Type": "aplication/json",
+        "Content-Type": "application/json",
     };
+    
 }
+
+export default myAxios;

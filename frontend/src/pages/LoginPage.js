@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./css/login.css";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+
+  const { login, serverError, clearServerError, loading } = useContext(AuthContext);
 
   function validateForm() {
     const newErrors = {};
@@ -34,19 +37,23 @@ export default function LoginPage() {
       return;
     }
     const data = { email, password };
-    //login(data);
+    login(data);
   }
   return (
     <div className="page">
       <div className="login">
         <h1>Üdv újra!</h1>
+        {serverError && <div className="alert-error">{serverError}</div>}
         <form onSubmit={submit}>
           <label>Email</label>
           <input
             type="email"
             value={email}
             placeholder="Email címed"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (serverError) clearServerError();
+            }}
           />
           {errors.email && <span className="error-text">{errors.email}</span>}
 
@@ -55,13 +62,18 @@ export default function LoginPage() {
             type="password"
             value={password}
             placeholder="Add meg a jelszavad"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (serverError) clearServerError();
+            }}
           />
           {errors.password && (
             <span className="error-text">{errors.password}</span>
           )}
 
-          <button type="submit">Bejelentkezés</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Bejelentkezés..." : "Bejelentkezés"}
+          </button>
         </form>
         <p className="bottom-text">
           Ingyenes a regisztráció!{" "}

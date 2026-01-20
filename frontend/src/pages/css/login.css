@@ -71,3 +71,36 @@ button {
 .bottom-text a {
   text-decoration: underline;
 }
+
+.alert-error {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+button {
+  margin-top: 18px;
+  padding: 12px 24px;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: white;
+  color: black;
+}
+
+button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border-color: #ccc;
+}

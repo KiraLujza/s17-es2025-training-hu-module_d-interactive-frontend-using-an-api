@@ -4,9 +4,13 @@ import Layout from "./pages/Layout";
 import NoPage from "./pages/NoPage";
 import DashboardPage from "./pages/DashboardPage";
 import CoursesPage from "./pages/CoursesPage";
+import CourseDetailsPage from "./pages/CourseDetailsPage";
 import MentorsPage from "./pages/MentorsPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import { AuthProvider } from "./contexts/AuthContext";
+import { CoursesProvider } from "./contexts/CoursesContext";
+import { MentorProvider } from "./contexts/MentorContext";
 function App() {
   const router = createBrowserRouter([
     {
@@ -19,22 +23,31 @@ function App() {
     },
     {
       path: "/",
+      element: <Navigate to="/register" replace />,
+    },
+    {
+      path: "/dashboard",
       element: <Layout />,
       children: [
         {
           index: true,
-          element: <Navigate to="/dashboard" replace />,
-        },
-        {
-          path: "/dashboard",
           element: <DashboardPage />,
         },
         {
-          path: "/courses",
-          element: <CoursesPage />,
+          path: "courses",
+          children: [
+            {
+              index: true,
+              element: <CoursesPage />,
+            },
+            {
+              path: ":id",
+              element: <CourseDetailsPage />,
+            },
+          ],
         },
         {
-          path: "/mentors",
+          path: "mentors",
           element: <MentorsPage />,
         },
       ],
@@ -46,7 +59,11 @@ function App() {
   ]);
 return (
   <AuthProvider>
-    <RouterProvider router={router} />
+    <CoursesProvider>
+      <MentorProvider>
+        <RouterProvider router={router} />
+      </MentorProvider>
+    </CoursesProvider>
   </AuthProvider>
 );
 

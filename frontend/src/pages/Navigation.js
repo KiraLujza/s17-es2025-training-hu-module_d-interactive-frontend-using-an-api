@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./css/navigation.css";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function Navigation() {
+  const { user, logout } = useContext(AuthContext);
   return (
     <div className="navbar">
       <div className="navbar-inner">
@@ -25,11 +27,13 @@ export default function Navigation() {
         <div className="nav-right-side">
           <ul>
             <li className="kiemelt">
-              {user.creditBalance ? user.creditBalance : "0"} credits
+              {user?.user?.creditBalance ? user.user.creditBalance : "0"} credits
             </li>
-            <li>Welcome {user.name ? user.name : "Guest"}</li>
+            <li>Welcome {user?.user?.name ? user.user.name : "Guest"}</li>
+            <li className="kiemelt" onClick={logout}>
+              Logout
+            </li>
           </ul>
-          <button className="nav-btn">Kijelentkezés</button>
         </div>
       </div>
     </div>
